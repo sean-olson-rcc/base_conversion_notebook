@@ -33,7 +33,7 @@ def validate_input(input: str, base: NumericBase) -> bool:
     # Use re.fullmatch to ensure the entire string matches the pattern.
     return re.fullmatch(pattern, input) is not None   
 
-################### BINARY TO ALTERNATE BASE CONVERSIONS ########################    
+# ------------ BINARY TO ALTERNATE BASE CONVERSIONS ------------   
    
 def binary_to_decimal(inp: str, print_result=True) -> int:
     """
@@ -97,7 +97,7 @@ def binary_to_hex(inp: str):
     hex_str = format(decimal_value, 'X')
     print(hex_str)  
 
-################### OCTAL TO ALTERNATE BASE CONVERSIONS ########################   
+# ------------ OCTAL TO ALTERNATE BASE CONVERSIONS ------------  
 
 def octal_to_decimal(inp: str, print_result=True) -> int:
     """
@@ -155,7 +155,7 @@ def octal_to_hex(inp: str):
     hex_str = format(decimal_value, 'X')
     print(hex_str) 
 
-################### DECIMAL TO ALTERNATE BASE CONVERSIONS ########################       
+# ------------ DECIMAL TO ALTERNATE BASE CONVERSIONS ------------       
 
 def decimal_to_binary(inp: str):
     """
@@ -209,5 +209,64 @@ def decimal_to_hex(inp: str):
     
     decimal_value = int(inp, NumericBase.DEC.value)
     hex_str = format(decimal_value, 'X')
-    print(hex_str)    
+    print(hex_str) 
+
+# ------------ HEXADECIMAL TO ALTERNATE BASE CONVERSIONS ------------      
+
+def hex_to_decimal(inp: str, print_result=True) -> int:
+    """
+    Converts a hexadecimal input string to a decimal number after validating the input.
+    
+    Parameters:
+        inp (str): The hexadecimal number in string format.
+    
+    If the input is not valid for hexadecimal conversion, it prints an error message.
+    Otherwise, it converts the hexadecimal input to a decimal number and prints the result.
+    """
+    if not validate_input(inp, NumericBase.HEX):
+        print("Error: Input is not a valid hexadecimal number.")
+        return
+    
+    result = int(inp, NumericBase.HEX.value)
+
+    if print_result:
+        print(result)
+    else:
+        return result
+
+def hex_to_binary(inp: str):
+    """
+    Converts a hexadecimal input string to a binary number after validating the input.
+    
+    Parameters:
+        inp (str): The hexadecimal number in string format.
+    
+    If the input is not valid for hexadecimal conversion, it prints an error message.
+    Otherwise, it converts the hexadecimal input to a binary string and prints the result.
+    """
+    if not validate_input(inp, NumericBase.HEX):
+        print("Error: Input is not a valid hexadecimal number.")
+        return
+    
+    decimal_value = hex_to_decimal(inp, False)
+    binary_str = format(decimal_value, 'b')
+    print(binary_str)
+
+def hex_to_octal(inp: str):
+    """
+    Converts a hexadecimal input string to an octal number after validating the input.
+    
+    Parameters:
+        inp (str): The hexadecimal number in string format.
+    
+    If the input is not valid for hexadecimal conversion, it prints an error message.
+    Otherwise, it converts the hexadecimal input to an octal string and prints the result.
+    """
+    if not validate_input(inp, NumericBase.HEX):
+        print("Error: Input is not a valid hexadecimal number.")
+        return
+    
+    decimal_value = hex_to_decimal(inp, False)
+    octal_str = format(decimal_value, 'o')
+    print(octal_str)    
     
