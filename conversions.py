@@ -153,5 +153,61 @@ def octal_to_hex(inp: str):
     
     decimal_value = octal_to_decimal(inp, False)
     hex_str = format(decimal_value, 'X')
+    print(hex_str) 
+
+################### DECIMAL TO ALTERNATE BASE CONVERSIONS ########################       
+
+def decimal_to_binary(inp: str):
+    """
+    Converts a decimal input string to a binary number after validating the input.
+    
+    Parameters:
+        inp (str): The decimal number in string format.
+    
+    If the input is not valid for decimal conversion, it prints an error message.
+    Otherwise, it converts the decimal input to binary and prints the result.
+    """
+    if not validate_input(inp, NumericBase.DEC):
+        print("Error: Input is not a valid decimal number.")
+        return
+    
+    decimal_value = int(inp, NumericBase.DEC.value)
+    binary_str = format(decimal_value, 'b')
+    print(binary_str)
+
+def decimal_to_octal(inp: str):
+    """
+    Converts a decimal input string to an octal number after validating the input.
+    
+    Parameters:
+        inp (str): The decimal number in string format.
+    
+    If the input is not valid for decimal conversion, it prints an error message.
+    Otherwise, it converts the decimal input to octal and prints the result.
+    """
+    if not validate_input(inp, NumericBase.DEC):
+        print("Error: Input is not a valid decimal number.")
+        return
+    
+    decimal_value = int(inp, NumericBase.DEC.value)
+    octal_str = format(decimal_value, 'o')
+    print(octal_str)
+
+def decimal_to_hex(inp: str):
+    """
+    Converts a decimal input string to a hexadecimal number after validating the input.
+    
+    Parameters:
+        inp (str): The decimal number in string format.
+    
+    If the input is not valid for decimal conversion, it prints an error message.
+    Otherwise, it converts the decimal input to hexadecimal and prints the result.
+    """
+    if not validate_input(inp, NumericBase.DEC):
+        print("Error: Input is not a valid decimal number.")
+        return
+    
+    decimal_value = int(inp, NumericBase.DEC.value)
+    hex_str = format(decimal_value, 'X')
     print(hex_str)    
     
