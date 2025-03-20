@@ -31,7 +31,9 @@ def validate_input(input: str, base: NumericBase) -> bool:
         raise ValueError("Unsupported numeric base")
     
     # Use re.fullmatch to ensure the entire string matches the pattern.
-    return re.fullmatch(pattern, input) is not None    
+    return re.fullmatch(pattern, input) is not None   
+
+################### BINARY TO ALTERNATE BASE CONVERSIONS ########################    
    
 def binary_to_decimal(inp: str, print_result=True) -> int:
     """
@@ -51,7 +53,7 @@ def binary_to_decimal(inp: str, print_result=True) -> int:
     result = int(inp, NumericBase.BI.value)
     if print_result:
         print(result)
-    else: 
+    else:
         return result
 
 def binary_to_octal(inp: str):
@@ -92,6 +94,64 @@ def binary_to_hex(inp: str):
     # Convert binary to a decimal integer first
     decimal_value = binary_to_decimal(inp, False)
     # Convert decimal to hexadecimal (using uppercase letters)
+    hex_str = format(decimal_value, 'X')
+    print(hex_str)  
+
+################### OCTAL TO ALTERNATE BASE CONVERSIONS ########################   
+
+def octal_to_decimal(inp: str, print_result=True) -> int:
+    """
+    Converts an octal input string to a decimal number after validating the input.
+    
+    Parameters:
+        inp (str): The octal number in string format.
+    
+    If the input is not valid for octal conversion, it prints an error message.
+    Otherwise, it converts the octal input to decimal and prints the result.
+    """
+    if not validate_input(inp, NumericBase.OCT):
+        print("Error: Input is not a valid octal number.")
+        return
+    
+    result = int(inp, NumericBase.OCT.value)
+    if print_result:
+        print(result)
+    else:    
+        return result   
+
+def octal_to_binary(inp: str):
+    """
+    Converts an octal input string to a binary number after validating the input.
+    
+    Parameters:
+        inp (str): The octal number in string format.
+    
+    If the input is not valid for octal conversion, it prints an error message.
+    Otherwise, it converts the octal input to binary and prints the result.
+    """
+    if not validate_input(inp, NumericBase.OCT):
+        print("Error: Input is not a valid octal number.")
+        return
+    
+    decimal_value = octal_to_decimal(inp, False)
+    binary_str = format(decimal_value, 'b')
+    print(binary_str)   
+
+def octal_to_hex(inp: str):
+    """
+    Converts an octal input string to a hexadecimal number after validating the input.
+    
+    Parameters:
+        inp (str): The octal number in string format.
+    
+    If the input is not valid for octal conversion, it prints an error message.
+    Otherwise, it converts the octal input to hexadecimal and prints the result.
+    """
+    if not validate_input(inp, NumericBase.OCT):
+        print("Error: Input is not a valid octal number.")
+        return
+    
+    decimal_value = octal_to_decimal(inp, False)
     hex_str = format(decimal_value, 'X')
     print(hex_str)    
     
